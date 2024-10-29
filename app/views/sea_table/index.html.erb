@@ -1,0 +1,22 @@
+<h1>Liste des dépenses</h1>
+
+<div style="display: flex; justify-content: center;">
+  <table>
+    <thead>
+      <tr>
+        <th>Raison</th>
+        <th>Date</th>
+        <th>Montant</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @expenses.each do |expense| %>
+        <tr>
+          <td><%= expense[:reason] %></td>
+          <td><%= expense[:date] %></td>
+          <td><%= expense[:amount] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

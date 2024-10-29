@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+#autocomplete-results {
+  border: 1px solid #ddd;
+  max-height: 150px;
+  overflow-y: auto;
+  position: absolute;
+  background: white;
+  width: 207px;
+}
+
+#autocomplete-results div {
+  padding: 8px;
+  cursor: pointer;
+}
+
+#autocomplete-results div:hover {
+  background-color: #f0f0f0;
+}

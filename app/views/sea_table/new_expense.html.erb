@@ -1,0 +1,65 @@
+<h3>Ajouter une valeur</h3>
+
+<div style="display: flex; justify-content: center;">
+  <%= form_with url: create_expense_sea_table_index_path, method: :post, local: true do |form| %>
+    <table>
+      <tr>
+        <td><%= form.label :expense_name, "Nom de la dépense" %></td>
+        <td>
+          <%= form.text_field :expense_name, required: true, id: 'expense_name_input', autocomplete: 'off' %>
+          <div id="autocomplete-results" style="border: 1px solid #ccc; display: none; position: absolute; background: #fff; z-index: 1000;"></div>
+        </td>
+      </tr>
+      <tr>
+        <td><%= form.label :expense_date, "Date de la dépense" %></td>
+        <td><%= form.date_field :expense_date, required: true %></td>
+      </tr>
+      <tr>
+        <td><%= form.label :expense_amount, "Montant de la dépense (€)" %></td>
+        <td><%= form.number_field :expense_amount, step: 0.01, required: true %></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align: center;">
+          <%= form.submit "Ajouter la dépense" %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const input = document.getElementById("expense_name_input");
+    const results = document.getElementById("autocomplete-results");
+
+    input.addEventListener("input", async () => {
+      const query = input.value;
+      if (query.length > 1) {
+        const response = await fetch(`/sea_table/autocomplete?q=${query}`);
+        const data = await response.json();
+
+        results.innerHTML = "";
+        if (data.length > 0) {
+          results.style.display = "block";
+          data.forEach(item => {
+            const div = document.createElement("div");
+            div.textContent = item;
+            div.style.padding = "8px";
+            div.style.cursor = "pointer";
+            div.onclick = () => {
+              input.value = item;
+              results.innerHTML = "";
+              results.style.display = "none";
+            };
+            results.appendChild(div);
+          });
+        } else {
+          results.style.display = "none";
+        }
+      } else {
+        results.innerHTML = "";
+        results.style.display = "none";
+      }
+    });
+  });
+</script>

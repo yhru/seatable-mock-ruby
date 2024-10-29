@@ -13,6 +13,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="abstract">
+      <h1>SeaTable Integration</h1>
+      <p>
+        <%= link_to 'Index', sea_table_index_path %> /
+        <%= link_to 'Ajouter', new_expense_sea_table_index_path %>
+      </p>
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 ruby '3.3.0'
@@ -67,4 +69,5 @@ group :test do
 end
 
 gem 'dotenv-rails'
+gem 'rubocop'
 gem 'seatable_ruby', git: 'https://github.com/viktorMarkevich/seatable_ruby'

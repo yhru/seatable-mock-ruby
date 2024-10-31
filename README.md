@@ -1,6 +1,6 @@
 # SeaTable Expense Tracker
 
-This project is a Rails application designed for tracking and managing expenses using SeaTable as the data storage solution. Key features of the application include:
+This project is a Rails application designed for tracking and managing data using SeaTable as the data storage solution. Key features of the application include:
 
 - Displaying a list of expenses with reason, date, and amount.
 - Adding a new expense with fields for name, date, and amount.

@@ -7,6 +7,7 @@
         <th>Raison</th>
         <th>Date</th>
         <th>Montant</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -15,6 +16,11 @@
           <td><%= expense[:reason] %></td>
           <td><%= expense[:date] %></td>
           <td><%= expense[:amount] %></td>
+          <td>
+            <%= form_with url: sea_table_path(expense[:id]), method: :delete, local: true do %>
+              <%= submit_tag 'x', data: { confirm: 'Êtes-vous sûr de vouloir supprimer cette dépense ?' } %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

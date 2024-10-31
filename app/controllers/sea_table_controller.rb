@@ -7,7 +7,12 @@ class SeaTableController < ApplicationController
 
     @expenses = if expenses_table
                   expenses_table[:rows].map do |expense|
-                    { reason: expense['0000'], date: expense['9yXx'], amount: expense['9m23'] }
+                    { 
+                      id: expense['_id'],
+                      reason: expense['0000'],
+                      date: expense['9yXx'],
+                      amount: expense['9m23'] 
+                    }
                   end
                 else
                   []
@@ -32,6 +37,20 @@ class SeaTableController < ApplicationController
     else
       flash[:alert] = "Erreur lors de l'ajout de la dépense."
       render :new_expense
+    end
+  end
+
+  def destroy
+    row_id = params[:id]
+    Rails.logger.info "Tentative de suppression de la dépense avec ID : #{row_id}"
+    row_api = SeatableRuby::Row.new(api_token: ENV['SEATABLE_BASE_TOKEN'])
+    response = row_api.delete_row(table_name: 'Expenses', row_id: row_id)
+
+    if response
+      redirect_to sea_table_index_path, notice: 'Dépense supprimée avec succès'
+    else
+      flash[:alert] = "Erreur lors de la suppression de la dépense."
+      redirect_to sea_table_index_path
     end
   end
 

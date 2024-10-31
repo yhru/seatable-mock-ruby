@@ -1,24 +1,18 @@
-# README
+# SeaTable Expense Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is a Rails application designed for tracking and managing expenses using SeaTable as the data storage solution. Key features of the application include:
 
-Things you may want to cover:
+- Displaying a list of expenses with reason, date, and amount.
+- Adding a new expense with fields for name, date, and amount.
+- Autocomplete functionality for expense names during entry.
+- Deleting expenses directly from the list view via a delete icon.
 
-* Ruby version
+## Preview
 
-* System dependencies
+![Application Preview](app/assets/images/readme.png)
 
-* Configuration
+## Features
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- **Expense Index**: Displays a list of saved expenses retrieved from SeaTable.
+- **Add Expense**: Provides a form to add new expenses, including fields for reason, date, and amount, with autocomplete enabled for streamlined input.
+- **Delete Expense**: Allows deletion of an expense directly from the list with a confirmation prompt using a "❌" icon.
